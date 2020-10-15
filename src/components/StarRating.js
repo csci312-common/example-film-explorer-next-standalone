@@ -5,10 +5,10 @@ import styles from './StarRating.module.css';
 function StarRating({ rating, setRating }) {
   const stars = [];
 
-  for (let i = 1; i <= rating; i += 1) {
+  for (let i = 1; i <= 5; i += 1) {
     stars.push(
       <span
-        className={styles.filled}
+        className={i <= rating ? styles.filled: styles.empty}
         key={i}
         onClick={() => {
           setRating(i);
@@ -19,20 +19,7 @@ function StarRating({ rating, setRating }) {
     );
   }
 
-  for (let i = rating + 1; i <= 5; i += 1) {
-    stars.push(
-      <span
-        className={styles.empty}
-        key={i}
-        onClick={() => {
-          setRating(i);
-        }}
-      >
-        ★
-      </span>
-    );
-  }
-
+ 
   return <span>{stars}</span>;
 }
 
